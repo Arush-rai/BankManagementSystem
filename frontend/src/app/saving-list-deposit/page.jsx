@@ -6,9 +6,9 @@ import React, { useEffect, useState } from 'react'
 const SavingListDeposit = () => {
 
     const [depositData, setDepositData] = useState([]);
-
+    const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')));
     const fetchData = async () => {
-        const res = await axios.get('http://localhost:5000/saving/getall')
+        const res = await axios.get('http://localhost:5000/saving/getbyemail/'+currentUser?.email)
         const data = res.data;
         console.table(data);
         setDepositData(data);

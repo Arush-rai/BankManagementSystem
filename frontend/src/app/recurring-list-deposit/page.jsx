@@ -6,9 +6,9 @@ import React, { useEffect, useState } from 'react'
 const RecurringListDeposit = () => {
 
     const [depositData, setDepositData] = useState([]);
-
+    const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')));
     const fetchData = async () => {
-        const res = await axios.get('http://localhost:5000/recurring/getall')
+        const res = await axios.get('http://localhost:5000/recurring/getbyemail/'+currentUser?.email)
         const data = res.data;
         console.table(data);
         setDepositData(data);

@@ -23,7 +23,7 @@ const DepositDetails = () => {
   const displayDetails = () => {
     if (!data) return <h1>Loading ... </h1>
     else {
-      return  <div className='m-28 pl-28 pb-28 pr-10 pt-10 border-4 border-black max-w-xlg'>
+      return <div className='m-28 pl-28 pb-28 pr-10 pt-10 border-4 border-black max-w-xlg'>
 
         <img className='h-32  w-32 inline' src="/logo.jpg" alt="" />
         <h1 className=' pl-6 ml-6 inline font-bold text-5xl'>MY BANK</h1>
@@ -34,11 +34,15 @@ const DepositDetails = () => {
           <h1 className='font-bold text-xl' >Received from :</h1>
           <div>
             <h1 className='pl-28 ml-12 inline'>NAME</h1>
-            <h1 className='pl-16 ml-12 inline uppercase'>: {data.holder_name}</h1>
+            <h1 className='pl-16 ml-12 inline uppercase'>: {data.name}</h1>
           </div>
           <div className='mt-2'>
-            <h1 className='pl-28 ml-12 inline ' >ADDRESS </h1>
-            <h1 className='pl-10 ml-10 inline' >: {data.address}</h1>
+            <h1 className='pl-28 ml-12 inline ' > CURRENT ADDRESS </h1>
+            <h1 className='pl-10 ml-10 inline' >: {data.current_Address}</h1>
+          </div>
+          <div className='mt-2'>
+            <h1 className='pl-28 ml-12 inline ' >PERMANENT  ADDRESS </h1>
+            <h1 className='pl-10 ml-10 inline' >: {data.permanent_Address}</h1>
           </div>
           <div className='mt-2'>
             <h1 className='pl-28 ml-12 inline' >PHONE NUMBER</h1>
@@ -52,14 +56,7 @@ const DepositDetails = () => {
             <h1 className='pl-28 ml-12 inline' >PAN NUMBER</h1>
             <h1 className='pl-4 ml-10 inline' >: {data.pan}</h1>
           </div>
-          <div className='mt-2'>
-            <h1 className='pl-28 ml-12 inline' > BANK BRANCH </h1>
-            <h1 className='pl-2 ml-8 inline' > : {data.branch}</h1>
-          </div>
-          <div className='mt-2'>
-            <h1 className='pl-28 ml-12 inline' >IFSC CODE</h1>
-            <h1 className='pl-7 ml-12 inline' >: {data.ifsc}</h1>
-          </div>
+          
         </div>
 
 
@@ -95,7 +92,7 @@ const DepositDetails = () => {
               <th scope="col" className="px-6 border-2 border-black py-3 text-start">
                 <div className="flex items-center gap-x-2">
                   <span className="text-xs font-semibold text-center uppercase tracking-wide text-gray-800">
-                    <h1>{data.acc_number}</h1>
+                    <h1>{data.Acc_number}</h1>
                   </span>
                 </div>
               </th>
@@ -135,11 +132,11 @@ const DepositDetails = () => {
   }
 
 
-return (
-  <div>
-    {displayDetails()}
-  </div>
-)
+  return (
+    <div>
+      {displayDetails()}
+    </div>
+  )
 }
 
 export default DepositDetails

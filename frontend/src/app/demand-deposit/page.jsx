@@ -364,11 +364,11 @@ const DemandDeposit = () => {
                                 <div className="sm:col-span-9">
                                     <input
                                         type="number"
-                                        id='amount'
+                                        id='Initial_Deposit_Amount'
                                         onChange={demandForm.handleChange}
-                                        value={demandForm.values.amount}
+                                        value={demandForm.values.Initial_Deposit_Amount}
                                         className="py-2 px-3 pe-11 block w-full border-2 border-gray-300 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                        placeholder='Inital amount'
+                                        placeholder='Inital amount' 
                                         required
 
 

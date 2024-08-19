@@ -19,20 +19,31 @@ const DepositDetails = () => {
     fetchDepositDetails();
   }, []);
 
-  function calculateFDMaturity(principal = 45000, years, compoundingFrequency = 3, annualRate = 4.5) {
+  function calculateFDMaturity(principal , years, rate = 4.5,  ) {
     // Convert annual rate percentage to decimal
-    const rate = annualRate / 100;
+   
 
     // Calculate the maturity amount using the compound interest formula
-    const maturityAmount = principal * Math.pow((1 + rate / compoundingFrequency), (compoundingFrequency * years));
+    const maturityAmount = principal * Math.pow((1 + rate /100), ( years));
 
     return maturityAmount;
+  }
+  function calculateInterest(principal , years, annualRate = 4.5, ) {
+      const amt = calculateFDMaturity(data.amount, data.tenure);
+      return amt -(data.amount);
+
+  }
+
+  const calculateMaturityDate = (date, tenure) => {
+    let d = new Date(date);
+    d.setFullYear(d.getFullYear() + tenure);
+    return d.toLocaleDateString()
   }
 
   const displayDetails = () => {
     if (!data) return <h1>Loading ... </h1>
     else {
-      return <div className='m-28 pl-28 pb-28 pr-10 pt-10 border-4 border-black max-w-xlg'>
+      return <div className='m-16 lg:m-28 p-10 lg:p-28 border-4 border-black max-w-xlg'>
 
         <img className='h-32  w-32 inline' src="/logo.jpg" alt="" />
         <h1 className=' pl-6 ml-6 inline font-bold text-5xl'>MY BANK</h1>
@@ -75,21 +86,21 @@ const DepositDetails = () => {
         <table className='min-w-full divide-y divide-gray-800 '>
           <thead >
             <tr  >
-              <th scope="col" className="px-6 border-2 border-black py-3 text-start">
+              <th scope="col" className="px-3 border-2 border-black py-3 text-start">
                 <div className="flex items-center gap-x-2">
                   <span className="text-xs font-semibold text-center uppercase tracking-wide text-gray-800">
                     Account number
                   </span>
                 </div>
               </th>
-              <th scope="col" className="px-6 border-2 border-black py-3 text-start">
+              <th scope="col" className="px-3 border-2 border-black py-3 text-start">
                 <div className="flex items-center gap-x-2">
                   <span className="text-xs font-semibold uppercase text-center tracking-wide text-gray-800">
                     Amount
                   </span>
                 </div>
               </th>
-              <th scope="col" className="px-6 border-2 border-black py-3 text-start">
+              <th scope="col" className="px-3 border-2 border-black py-3 text-start">
                 <div className="flex items-center gap-x-2">
                   <span className="text-xs font-semibold uppercase tracking-wide text-center text-gray-800">
                     Interest rate <br />
@@ -97,14 +108,14 @@ const DepositDetails = () => {
                   </span>
                 </div>
               </th>
-              <th scope="col" className="px-6 border-2 border-black py-3 text-start">
+              <th scope="col" className="px-3 border-2 border-black py-3 text-start">
                 <div className="flex items-center gap-x-2">
                   <span className="text-xs text-center font-semibold uppercase tracking-wide text-gray-800">
                     Start Date
                   </span>
                 </div>
               </th>
-              <th scope="col" className="px-6 border-2 border-black py-3 text-start">
+              <th scope="col" className="px-3 border-2 border-black py-3 text-start">
                 <div className="flex items-center gap-x-2">
                   <span className="text-xs text-center font-semibold uppercase tracking-wide text-gray-800">
                     Maturity Date
@@ -117,39 +128,38 @@ const DepositDetails = () => {
           </thead>
           <thead >
             <tr  >
-              <th scope="col" className="px-6 border-2 border-black py-3 text-start">
+              <th scope="col" className="px-3 border-2 border-black py-3 text-start">
                 <div className="flex items-center gap-x-2">
                   <span className="text-xs font-semibold text-center uppercase tracking-wide text-gray-800">
                     <h1>{data.acc_number}</h1>
                   </span>
                 </div>
               </th>
-              <th scope="col" className="px-6 border-2 border-black py-3 text-start">
+              <th scope="col" className="px-3 border-2 border-black py-3 text-start">
                 <div className="flex items-center gap-x-2">
                   <span className="text-xs font-semibold uppercase text-center tracking-wide text-gray-800">
                     <h1>₹{data.amount}</h1>
                   </span>
                 </div>
               </th>
-              <th scope="col" className="px-6 border-2 border-black py-3 text-start">
+              <th scope="col" className="px-3 border-2 border-black py-3 text-start">
                 <div className="flex items-center gap-x-2">
                   <span className="text-xs font-semibold uppercase tracking-wide text-center text-gray-800">
-                    Interest rate <br />
-                    %P.A
+                    <h1>4.5%</h1>
                   </span>
                 </div>
               </th>
-              <th scope="col" className="px-6 border-2 border-black py-3 text-start">
+              <th scope="col" className="px-3 border-2 border-black py-3 text-start">
                 <div className="flex items-center gap-x-2">
                   <span className="text-xs text-center font-semibold uppercase tracking-wide text-gray-800">
                     {new Date(data.createdAt).toLocaleDateString()}
                   </span>
                 </div>
               </th>
-              <th scope="col" className="px-6 border-2 border-black py-3 text-start">
+              <th scope="col" className="px-3 border-2 border-black py-3 text-start">
                 <div className="flex items-center gap-x-2">
                   <span className="text-xs text-center font-semibold uppercase tracking-wide text-gray-800">
-                    <h1>{new  Date(data.createdAt).toLocaleDateString()}</h1>
+                    <h1>{calculateMaturityDate(data.createdAt, data.tenure)}</h1>
                   </span>
                 </div>
               </th>
@@ -169,8 +179,12 @@ const DepositDetails = () => {
           <h4 className='inline pl-4' >:Compound method</h4>
           </div>
           <div>
-          <h4 className=' inline' >Maturity Amount </h4>
-          <h4 className=' inline ml-20 pl-1 '> :</h4>
+          <h4 className=' inline' >Maturity Interest </h4>
+          <h4 className=' inline ml-20 pl-1 '> :₹ {calculateInterest(data.amount, data.tenure).toFixed(2)}</h4>
+          </div>
+          <div>
+          <h4 className=' inline' >Maturity Amount   </h4>
+          <h4 className=' inline ml-20 pl-1 '> :₹ {calculateFDMaturity(data.amount, data.tenure).toFixed(2)}</h4>
           </div>
         </div>
         <h4 className='text-right mt-28 mr-28'>Signature</h4>

@@ -9,16 +9,26 @@ const Navbar = () => {
 
   const showLoggedIn = () => {
     if (!userLoggedIn) {
-      return <li className="relative hover:text-black">
-        <Link
-          className="block py-3 lg:py-7 px-6 border-b-2 border-transparent"
-          href="/login"
-        >
-          login
-        </Link>
-      </li>
+      return <>
+        <li className="relative hover:text-black">
+          <Link
+            className="block py-3 lg:py-7 px-6 border-b-2 border-transparent"
+            href="/signup"
+          >
+            sign up
+          </Link>
+        </li>
+        <li className="relative hover:text-black">
+          <Link
+            className="block py-3 lg:py-7 px-6 border-b-2 border-transparent"
+            href="/login"
+          >
+            login
+          </Link>
+        </li>
+      </>
     } else {
-      return <button onClick={logout}>Logout</button>
+      return <button  onClick={logout}>Logout</button>
     }
   }
 
@@ -29,8 +39,9 @@ const Navbar = () => {
           <div className="container xl:max-w-6xl mx-auto px-4">
             <div className="lg:flex lg:justify-between">
               <div className="flex justify-between">
-                <div className="mx-w-10 text-4xl font-bold capitalize text-gray-900 flex items-center">
-                  MY BANK
+                <div className="mx-w-10 text-4xl font-bold capitalize text-gray-900 flex gap-4 items-center">
+                  <img src="/logo.png" className='h-16' alt="" />
+                  <p>MY BANK</p>
                 </div>
                 {/* mobile nav */}
                 <div className="flex flex-row items-center py-4 lg:py-0">
@@ -103,17 +114,9 @@ const Navbar = () => {
                       View deposits
                     </Link>
                   </li>
-                  <li className="text-2xl">|</li>
-                  <FaRegUser className="text-xl m-5 mr-0" />
 
-                  <li className="relative hover:text-black">
-                    <Link
-                      className="block py-3 lg:py-7 px-6 border-b-2 border-transparent"
-                      href="/signup"
-                    >
-                      sign up
-                    </Link>
-                  </li>
+
+
                   <li className="relative hover:text-black">
                     <Link
                       className="block py-3 lg:py-7 px-6 border-b-2 border-transparent"
@@ -122,6 +125,8 @@ const Navbar = () => {
                       Contact us
                     </Link>
                   </li>
+                  <li className="text-2xl">|</li>
+                  <FaRegUser className="text-xl m-5 mr-0" />
                   {showLoggedIn()}
                 </ul>
               </div>

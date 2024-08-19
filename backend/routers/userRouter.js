@@ -23,6 +23,19 @@ router.get('/getall', (req, res) => {
         });
 
 })
+router.post('/authenticate', (req, res) => {
+    Model.findOne(req.body)
+        .then((result) => {
+            if (result) res.status(200).json(result);
+            else res.status(401).json({ message: 'login failed' });
+        }).catch((err) => {
+            res.status(500).json(err);
+        });
+})
+
+router.get('/authorise', (req,res) => {
+    res.status(200).json({ allowed:true })
+})
 
 
 

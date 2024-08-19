@@ -2,10 +2,13 @@
 import axios from 'axios';
 import { useFormik } from 'formik';
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import React from 'react'
 import toast from 'react-hot-toast';
 
 const login = () => {
+
+  const router = useRouter();
 
   const loginForm = useFormik({
     initialValues: {
