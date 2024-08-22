@@ -7,14 +7,14 @@ import { LiaPiggyBankSolid } from "react-icons/lia";
 
 const deposit = () => {
   return (
-    <div>
+    <div >
    
       <>
   {/* start services */}
    <div
   //  style={ { backgroundImage:  ` url('https://static.vecteezy.com/system/resources/previews/026/827/704/non_2x/banking-technology-design-vector.jpg')` }} 
     id="services"
-    className="section relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white"
+    className="section relative  pt-20 pb-8 md:pt-16 md:pb-0 bg-white"
   >
     <div className="container xl:max-w-6xl mt-10 mx-auto px-4">
       {/* Heading start */}

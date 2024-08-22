@@ -19,7 +19,7 @@ const DepositDetails = () => {
     fetchDepositDetails();
   }, []);
 
-  function calculateFDMaturity(principal , years, rate = 4.5,  ) {
+  function calculateFDMaturity(principal , years, rate = 9,  ) {
     // Convert annual rate percentage to decimal
    
 
@@ -145,7 +145,7 @@ const DepositDetails = () => {
               <th scope="col" className="px-3 border-2 border-black py-3 text-start">
                 <div className="flex items-center gap-x-2">
                   <span className="text-xs font-semibold uppercase tracking-wide text-center text-gray-800">
-                    <h1>4.5%</h1>
+                    <h1 className='text-center'>9%</h1>
                   </span>
                 </div>
               </th>

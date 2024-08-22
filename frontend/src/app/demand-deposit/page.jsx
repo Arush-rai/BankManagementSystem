@@ -42,7 +42,7 @@ const DemandDeposit = () => {
         <div>
             <>
                 {/* Card Section */}
-                <div className="max-w-4xl m-12 px-4 py-10 sm:px-6 lg:px-8 mx-auto">
+                <div className="max-w-4xl mt-28 m-12 px-4 py-10 sm:px-6 lg:px-8 mx-auto">
                     {/* Card */}
                     <div className="bg-white rounded-xl shadow shadow-gray-700 p-4 sm:p-7">
                         <div className="mb-8">

@@ -9,7 +9,7 @@ const ViewDeposit = () => {
   return (
     <div>
       <>
-  <div id="portfolio" className="section relative z-0 py-12 md:py-16 bg-white" >
+  <div id="portfolio" className="section relative mt-28 z-0 py-12 md:py-16 bg-white" >
     <div className="container xl:max-w-6xl mx-auto px-4">
       {/* Heading start */}
       <header className="text-center mt-10 mx-auto mb-12 lg:px-20">
