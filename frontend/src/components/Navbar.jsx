@@ -35,7 +35,7 @@ const Navbar = () => {
         </li>
       </>
     } else {
-      return <button className='bg-red-600 p-2 text-white border rounded-md'  onClick={logout}>Logout</button>
+      return <button className='bg-red-600 p-2 text-white border rounded-lg'  onClick={logout}>Logout</button>
     }
   }
 

@@ -25,7 +25,7 @@ export default function HeroSlider() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img className='w-100 object-cover' src="/slide1.jpg" alt="" />
+          <img className='w-100 object-cover' src="/slide5.jpg" alt="" />
         </SwiperSlide>
         <SwiperSlide>
           <img className='w-100 object-cover' src="/slide2.png" alt="" />

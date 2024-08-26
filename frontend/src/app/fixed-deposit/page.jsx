@@ -22,18 +22,25 @@ const FixedDeposit = () => {
       ifsc: '',
       renewal: '',
     },
-    onSubmit: (values) => {
-      console.log(values);
-
-      axios.post('http://localhost:5000/fd/add', values)
-        .then((response) => {
-          console.log(response.status);
+    onSubmit: async (values) => {
+      try {
+        const response = await axios.post('http://localhost:5000/fd/add', values);
+        if (response.status === 200) {
           toast.success('Your Fixed Deposit has been added');
-        }).catch((err) => {
-          console.log(err);
-          toast.error('Some Error Occured');
-        });
-
+          
+          // Trigger receipt generation and email sending
+          // Assuming you pass the necessary data to generate and send the receipt
+          await axios.post('/api/sendEmail', {
+            to: values.email,
+            subject: 'Fixed Deposit Receipt',
+            text: 'Please find attached your Fixed Deposit receipt.',
+            attachment: '' // Include the generated PDF data here
+          });
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error('Some Error Occurred');
+      }
     }
   })
 

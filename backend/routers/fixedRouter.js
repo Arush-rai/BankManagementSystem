@@ -3,16 +3,28 @@ const express = require('express');
 const router = express.Router();
 const Model = require('../models/fixedModel');
 
-router.post('/add', (req, res) => {
-    new Model(req.body).save()
-        .then((result) => {
-            console.log(result);  
-            res.status(200).json(result);
-        }).catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-});
+const sendReceiptEmail = require('../emailService');
+
+
+
+
+
+router.post('/add', async (req, res) => {
+    try {
+      // Save the form data to the database first
+      const formData = req.body;
+      const result = await new Model(formData).save();
+      
+      // Send the receipt email
+      await sendReceiptEmail(formData.email, formData);
+      
+      // Respond after both operations are complete
+      res.status(200).json(result);
+    } catch (error) {
+      console.error('Error saving data or sending email:', error);
+      res.status(500).send('Error occurred while processing your request.');
+    }
+  });
 
 router.get('/getall', (req, res) => {
     Model.find()

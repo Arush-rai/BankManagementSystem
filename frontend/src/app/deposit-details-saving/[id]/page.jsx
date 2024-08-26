@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
+import jsPDF from 'jspdf';
 
 const DepositDetails = () => {
 
@@ -19,6 +20,19 @@ const DepositDetails = () => {
     fetchDepositDetails();
   }, [])
 
+  const downloadReceipt = () => {
+    const input = document.getElementById('receipt');
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'px',
+        format: [canvas.width, canvas.height]
+      });
+      pdf.addImage(imgData, 'PNG', 0, 0);
+      pdf.save(`Fixed_Deposit_Receipt_${id}.pdf`);
+    });
+  }
 
   const displayDetails = () => {
     if (!data) return <h1>Loading ... </h1>
@@ -127,6 +141,11 @@ const DepositDetails = () => {
         </div>
         <h4 className='text-right mt-28 mr-28'>Signature</h4>
 
+        <button
+            onClick={downloadReceipt}
+            className='mt-8 sm:mt-16 py-2 px-4 bg-blue-500 text-white font-bold rounded'>
+            Download Receipt
+          </button>
       </div>
     }
   }

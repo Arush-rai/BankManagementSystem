@@ -36,7 +36,7 @@ const login = () => {
 
   return (
     <>
-      <div className='px-20' style={{ backgroundImage: ` url('https://static.vecteezy.com/system/resources/previews/022/371/795/non_2x/a-blue-digital-technology-background-with-a-white-building-and-a-logo-for-the-bank-vector.jpg')` }}>
+      <div className='px-10' style={{ backgroundImage: ` url('https://static.vecteezy.com/system/resources/previews/022/371/795/non_2x/a-blue-digital-technology-background-with-a-white-building-and-a-logo-for-the-bank-vector.jpg')` }}>
         <div className='max-w-sm ml-auto  pt-8 pb-20'>
           <div className="mt-28 mb-20 bg-gray-200 border border-gray-200 rounded-xl shadow-sm">
             <div className="p-4 sm:p-7">

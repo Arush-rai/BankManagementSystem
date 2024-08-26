@@ -4,9 +4,26 @@ import { useFormik } from 'formik';
 import Link from 'next/link';
 import React from 'react'
 import toast from 'react-hot-toast';
+// import * as Yup from 'yup'
 
 const signup = () => {
-
+  // const signupSchema = Yup.object().shape({
+  //   email: Yup.string()
+  //     .email('Please enter a valod email')
+  //     .required('Email is required'),
+  //   password: Yup.string()
+  //     .min(8, 'password must contain at least 8 characters')
+  //     .matches(/[a-z]/, 'password must contain at least one lowercase')
+  //     .matches(/[A-Z]/, 'password must contain at least one uppercase')
+  //     .matches(/[\d]/, 'password must contain at least one number')
+  //     .required('password is required'),
+  //     confirmPassword: Yup.string()
+  //     .min(8, 'password must contain at least 8 characters')
+  //     .matches(/[a-z]/, 'password must contain at least one lowercase')
+  //     .matches(/[A-Z]/, 'password must contain at least one uppercase')
+  //     .matches(/[\d]/, 'password must contain at least one number')
+  //     .required('password is required')
+  // })
   const signupForm = useFormik({
     initialValues: {
       name: '',
@@ -14,6 +31,7 @@ const signup = () => {
       password: '',
       confirmPassword: ''
     },
+  
     onSubmit: (values) => {
       console.log(values);
       axios.post('http://localhost:5000/user/add', values)
@@ -22,12 +40,13 @@ const signup = () => {
         }).catch((err) => {
           toast.error('Something went wrong');
         });
-    }
+    },
+    // validationSchema: signupSchema
   });
 
 
   return (
-    <div className='px-20' style={{ backgroundImage: ` url('https://static.vecteezy.com/system/resources/previews/022/371/795/non_2x/a-blue-digital-technology-background-with-a-white-building-and-a-logo-for-the-bank-vector.jpg')` }}>
+    <div className='px-10' style={{ backgroundImage: ` url('https://static.vecteezy.com/system/resources/previews/022/371/795/non_2x/a-blue-digital-technology-background-with-a-white-building-and-a-logo-for-the-bank-vector.jpg')` }}>
       <div className='max-w-sm ml-auto pt-4 pb-20'>
         <div className="mt-24 bg-gray-200 border border-gray-200 rounded-xl shadow-sm">
           <div className="p-4 sm:p-7">
@@ -95,6 +114,9 @@ const signup = () => {
                         required=""
                         aria-describedby="email-error"
                       />
+                      {/* {signupForm.errors.email && signupForm.touched.email ? (
+                        <div className='text-red-500 text-sm'>{signupForm.errors.email}</div>
+                      ) : null} */}
                       <div className="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                         <svg
                           className="size-5 text-red-500"
@@ -128,6 +150,9 @@ const signup = () => {
                         required=""
                         aria-describedby="password-error"
                       />
+                       {/* {signupForm.errors.password && signupForm.touched.password ? (
+                        <div className='text-red-500 text-sm'>{signupForm.errors.password}</div>
+                      ) : null} */}
                       <div className="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                         <svg
                           className="size-5 text-red-500"
