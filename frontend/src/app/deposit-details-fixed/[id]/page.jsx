@@ -51,20 +51,20 @@ const DepositDetails = () => {
       pdf.addImage(imgData, 'PNG', 0, 0);
       const pdfData = pdf.output('datauristring');
   
-      // Send the PDF via email
-      try {
-        const response = await axios.post('/api/sendEmail', {
-          to: data.email,
-          subject: 'Fixed Deposit Receipt',
-          text: 'Please find attached your Fixed Deposit receipt.',
-          attachment: pdfData.split(',')[1] // Extract base64 data
-        });
-        if (response.status === 200) {
-          toast.success('Receipt sent to email!');
-        }
-      } catch (error) {
-        toast.error('Failed to send email.');
-      }
+      //  Send the PDF via email
+       try {
+         const response = await axios.post('/api/sendEmail', {
+        to: data.email,
+         subject: 'Fixed Deposit Receipt',
+           text: 'Please find attached your Fixed Deposit receipt.',
+         attachment: pdfData.split(',')[1] // Extract base64 data
+         });
+         if (response.status === 200) {
+           toast.success('Receipt sent to email!');
+         }
+       } catch (error) {
+         toast.error('Failed to send email.');
+       }
     });
   }
   
