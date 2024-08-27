@@ -48,39 +48,39 @@ const DepositDetails = () => {
           <div className="border-2 border-black mt-6 mb-6 p-4 sm:mt-10 sm:mb-10">
             <h1 className="font-bold text-lg sm:text-xl">Received from :</h1>
             <div className="mt-2">
-              <h1 className="inline">NAME:</h1>
+              <h1 className="inline font-bold">NAME:</h1>
               <h1 className="inline ml-4 uppercase">{data.name}</h1>
             </div>
             <div className="mt-2">
-              <h1 className="inline">CURRENT ADDRESS:</h1>
+              <h1 className="inline font-bold">CURRENT ADDRESS:</h1>
               <h1 className="inline ml-4">{data.current_Address}</h1>
             </div>
             <div className="mt-2">
-              <h1 className="inline">PERMANENT ADDRESS:</h1>
+              <h1 className="inline font-bold">PERMANENT ADDRESS:</h1>
               <h1 className="inline ml-4">{data.permanent_Address}</h1>
             </div>
             <div className="mt-2">
-              <h1 className="inline">PHONE NUMBER:</h1>
+              <h1 className="inline font-bold">PHONE NUMBER:</h1>
               <h1 className="inline ml-4">{data.number}</h1>
             </div>
             <div className="mt-2">
-              <h1 className="inline">EMAIL:</h1>
+              <h1 className="inline font-bold">EMAIL:</h1>
               <h1 className="inline ml-4">{data.email}</h1>
             </div>
             <div className="mt-2">
-              <h1 className="inline">PAN NUMBER:</h1>
+              <h1 className="inline font-bold">PAN NUMBER:</h1>
               <h1 className="inline ml-4">{data.pan}</h1>
             </div>
             <div className="mt-2">
-              <h1 className="inline">AADHAR NUMBER:</h1>
+              <h1 className="inline font-bold">AADHAR NUMBER:</h1>
               <h1 className="inline ml-4">{data.aadhar}</h1>
             </div>
             <div className="mt-2">
-              <h1 className="inline">BANK BRANCH:</h1>
+              <h1 className="inline font-bold">BANK BRANCH:</h1>
               <h1 className="inline ml-4">{data.branch}</h1>
             </div>
             <div className="mt-2">
-              <h1 className="inline">IFSC CODE:</h1>
+              <h1 className="inline font-bold">IFSC CODE:</h1>
               <h1 className="inline ml-4">{data.ifsc}</h1>
             </div>
           </div>

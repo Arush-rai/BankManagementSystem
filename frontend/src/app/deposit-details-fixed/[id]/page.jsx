@@ -74,7 +74,7 @@ const DepositDetails = () => {
     if (!data) return <h1>Loading ... </h1>
     else {
       return (
-        <div className='mr-4 m-4 sm:m-8 lg:m-16 p-2 sm:p-8 lg:p-16 mt-24 border-4 border-black max-w-full'>
+        <div className='mr-2 m-2 sm:m-8 lg:m-16 p-2 sm:p-8 lg:p-16 mt-24 border-4 border-black max-w-full'>
           <div id="receipt">
             <div className='flex flex-col sm:flex-row items-center'>
               <img className='h-20 sm:h-32 w-20 sm:w-32' src="/logo.jpg" alt="Logo" />

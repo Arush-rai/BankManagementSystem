@@ -37,119 +37,86 @@ const DepositDetails = () => {
   const displayDetails = () => {
     if (!data) return <h1>Loading ... </h1>
     else {
-      return <div className='m-28 pl-28 pb-28 pr-10 pt-10 border-4 border-black max-w-xlg'>
+      return (
+        <div className="flex justify-center items-center min-h-screen bg-gray-100 mt-16">
+          <div id="receipt" className='bg-white m-4 sm:m-10 p-4 sm:p-10 border-4 border-black max-w-4xl w-full'>
+            <div className="flex flex-col sm:flex-row items-center justify-center">
+              <img className='h-24 w-24 sm:h-32 sm:w-32' src="/logo.jpg" alt="Logo" />
+              <h1 className='text-center sm:text-left sm:pl-6 sm:ml-6 font-bold text-3xl sm:text-5xl'>MY BANK</h1>
+            </div>
+            <p className='text-center font-bold text-xl sm:text-3xl mt-4'>Saving Deposit Receipt</p>
 
-        <img className='h-32  w-32 inline' src="/logo.jpg" alt="" />
-        <h1 className=' pl-6 ml-6 inline font-bold text-5xl'>MY BANK</h1>
-        <p className='text-center font-bold text-3xl '>Saving Deposit Receipt</p>
+            <div className='border-2 border-black mt-6 sm:mt-10 mb-6 sm:mb-10 p-4'>
+              <h1 className='font-bold text-lg sm:text-xl'>Received from :</h1>
+              <div className='mt-2'>
+                <h1 className='font-semibold '>NAME: <h1 className='font-normal inline-block aline-text-end uppercase'>{data.name}</h1></h1>
+              </div>
+              <div className='mt-2'>
+                <h1 className='font-semibold'>CURRENT ADDRESS: <span className='font-normal'>{data.current_Address}</span></h1>
+              </div>
+              <div className='mt-2'>
+                <h1 className='font-semibold'>PERMANENT ADDRESS: <span className='font-normal'>{data.permanent_Address}</span></h1>
+              </div>
+              <div className='mt-2'>
+                <h1 className='font-semibold'>PHONE NUMBER: <span className='font-normal'>{data.number}</span></h1>
+              </div>
+              <div className='mt-2'>
+                <h1 className='font-semibold'>EMAIL: <span className='font-normal'>{data.email}</span></h1>
+              </div>
+              <div className='mt-2'>
+                <h1 className='font-semibold'>PAN NUMBER: <span className='font-normal'>{data.pan}</span></h1>
+              </div>
+            </div>
 
+            <table className='min-w-full divide-y divide-gray-800 text-sm sm:text-base'>
+              <thead>
+                <tr>
+                  <th scope="col" className="px-2 sm:px-6 border-2 border-black py-3 text-start">
+                    <span className="font-semibold uppercase tracking-wide text-gray-800">Account number</span>
+                  </th>
+                  <th scope="col" className="px-2 sm:px-6 border-2 border-black py-3 text-start">
+                    <span className="font-semibold uppercase tracking-wide text-gray-800">Amount</span>
+                  </th>
+                  <th scope="col" className="px-2 sm:px-6 border-2 border-black py-3 text-start">
+                    <span className="font-semibold uppercase tracking-wide text-gray-800">Deposit Date</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="px-2 sm:px-6 border-2 border-black py-3">
+                    <span>{data.Acc_number}</span>
+                  </td>
+                  <td className="px-2 sm:px-6 border-2 border-black py-3">
+                    <span>₹{data.amount}</span>
+                  </td>
+                  <td className="px-2 sm:px-6 border-2 border-black py-3">
+                    <span>{new Date(data.createdAt).toLocaleDateString()}</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
 
-        <div className='border-2 border-black mt-10 mb-10 p-4'>
-          <h1 className='font-bold text-xl' >Received from :</h1>
-          <div>
-            <h1 className='pl-28 ml-12 inline'>NAME</h1>
-            <h1 className='pl-16 ml-12 inline uppercase'>: {data.name}</h1>
+            <div className='border-2 border-black mt-6 sm:mt-10 p-4 sm:p-10'>
+              <div>
+                <h4 className='font-semibold'>Date Of Deposit</h4>
+                <h4 className='ml-10 sm:ml-28'>{new Date(data.createdAt).toLocaleDateString()}</h4>
+              </div>
+            </div>
+            <h4 className='text-right mt-16 sm:mt-28'>Signature</h4>
+
+            <div className="flex justify-center sm:justify-self-start mt-8">
+              <button
+                onClick={downloadReceipt}
+                className='py-2 px-4 aline-left bg-blue-500 text-white font-bold rounded'>
+                Download Receipt
+              </button>
+            </div>
           </div>
-          <div className='mt-2'>
-            <h1 className='pl-28 ml-12 inline ' > CURRENT ADDRESS </h1>
-            <h1 className='pl-10 ml-10 inline' >: {data.current_Address}</h1>
-          </div>
-          <div className='mt-2'>
-            <h1 className='pl-28 ml-12 inline ' >PERMANENT  ADDRESS </h1>
-            <h1 className='pl-10 ml-10 inline' >: {data.permanent_Address}</h1>
-          </div>
-          <div className='mt-2'>
-            <h1 className='pl-28 ml-12 inline' >PHONE NUMBER</h1>
-            <h1 className='pl-7 m-0.5 inline' >: {data.number}</h1>
-          </div>
-          <div className='mt-2'>
-            <h1 className='pl-28 ml-12 inline' >EMAIL</h1>
-            <h1 className='pl-14 ml-14 inline' >: {data.email}</h1>
-          </div>
-          <div className='mt-2'>
-            <h1 className='pl-28 ml-12 inline' >PAN NUMBER</h1>
-            <h1 className='pl-4 ml-10 inline' >: {data.pan}</h1>
-          </div>
-          
         </div>
-
-
-        <table className='min-w-full divide-y divide-gray-800 '>
-          <thead >
-            <tr  >
-              <th scope="col" className="px-6 border-2 border-black py-3 text-start">
-                <div className="flex items-center gap-x-2">
-                  <span className="text-xs font-semibold text-center uppercase tracking-wide text-gray-800">
-                    Account number
-                  </span>
-                </div>
-              </th>
-              <th scope="col" className="px-6 border-2 border-black py-3 text-start">
-                <div className="flex items-center gap-x-2">
-                  <span className="text-xs font-semibold uppercase text-center tracking-wide text-gray-800">
-                    Amount
-                  </span>
-                </div>
-              </th>
-
-              <th scope="col" className="px-6 border-2 border-black py-3 text-start">
-                <div className="flex items-center gap-x-2">
-                  <span className="text-xs text-center font-semibold uppercase tracking-wide text-gray-800">
-                    Deposit Date
-                  </span>
-                </div>
-              </th>
-            </tr>
-          </thead>
-          <thead >
-            <tr  >
-              <th scope="col" className="px-6 border-2 border-black py-3 text-start">
-                <div className="flex items-center gap-x-2">
-                  <span className="text-xs font-semibold text-center uppercase tracking-wide text-gray-800">
-                    <h1>{data.Acc_number}</h1>
-                  </span>
-                </div>
-              </th>
-              <th scope="col" className="px-6 border-2 border-black py-3 text-start">
-                <div className="flex items-center gap-x-2">
-                  <span className="text-xs font-semibold uppercase text-center tracking-wide text-gray-800">
-                    <h1>₹{data.amount}</h1>
-                  </span>
-                </div>
-              </th>
-
-              <th scope="col" className="px-6 border-2 border-black py-3 text-start">
-                <div className="flex items-center gap-x-2">
-                  <span className="text-xs text-center font-semibold uppercase tracking-wide text-gray-800">
-                    {new Date(data.createdAt).toLocaleDateString()}
-                  </span>
-                </div>
-              </th>
-
-            </tr>
-          </thead>
-        </table>
-
-
-        <div className='border-2 border-black mt-10 p-10'>
-          <div>
-            <h4 className='inline '>Date Of Deposit</h4>
-            <h4 className='ml-28 inline '>: {new Date(data.createdAt).toLocaleDateString()}</h4>
-          </div>
-
-
-        </div>
-        <h4 className='text-right mt-28 mr-28'>Signature</h4>
-
-        <button
-            onClick={downloadReceipt}
-            className='mt-8 sm:mt-16 py-2 px-4 bg-blue-500 text-white font-bold rounded'>
-            Download Receipt
-          </button>
-      </div>
+      )
     }
   }
-
 
   return (
     <div>
@@ -158,4 +125,4 @@ const DepositDetails = () => {
   )
 }
 
-export default DepositDetails
+export default DepositDetails;
