@@ -7,7 +7,7 @@ const mySchema = new Schema({
     current_Address: String,
     permanent_Address: String,
     email: String,
-    number: Number,
+    
     pan: Number,
     aadhar: Number,
     acc_number: Number,
