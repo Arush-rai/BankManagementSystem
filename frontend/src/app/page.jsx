@@ -28,7 +28,7 @@ const Home = () => {
                   <div className="mb-12">
                     <h1 className="text-4xl leading-normal text-black font-bold mb-4">
 
-                      MY BANK Digita
+                      MY BANK Digital
                       <br />
                       serve :{" "}
 
