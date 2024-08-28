@@ -30,12 +30,12 @@ const FixedDeposit = () => {
           
           // Trigger receipt generation and email sending
           // Assuming you pass the necessary data to generate and send the receipt
-          await axios.post('/api/sendEmail', {
-            to: values.email,
-            subject: 'Fixed Deposit Receipt',
-            text: 'Please find attached your Fixed Deposit receipt.',
-            attachment: '' // Include the generated PDF data here
-          });
+          // await axios.post('/api/sendEmail', {
+          //   to: values.email,
+          //   subject: 'Fixed Deposit Receipt',
+          //   text: 'Please find attached your Fixed Deposit receipt.',
+          //   attachment: '' // Include the generated PDF data here
+          // });
         }
       } catch (error) {
         console.log(error);
