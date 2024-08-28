@@ -39,9 +39,9 @@ const DepositDetails = () => {
     return d.toLocaleDateString()
   }
 
-  const downloadReceipt = async () => {
+  const downloadReceipt = () => {
     const input = document.getElementById('receipt');
-    html2canvas(input).then(async (canvas) => {
+    html2canvas(input).then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF({
         orientation: 'portrait',
@@ -49,24 +49,24 @@ const DepositDetails = () => {
         format: [canvas.width, canvas.height]
       });
       pdf.addImage(imgData, 'PNG', 0, 0);
-      const pdfData = pdf.output('datauristring');
-  
-      //  Send the PDF via email
-       try {
-         const response = await axios.post('/api/sendEmail', {
-        to: data.email,
-         subject: 'Fixed Deposit Receipt',
-           text: 'Please find attached your Fixed Deposit receipt.',
-         attachment: pdfData.split(',')[1] // Extract base64 data
-         });
-         if (response.status === 200) {
-           toast.success('Receipt sent to email!');
-         }
-       } catch (error) {
-         toast.error('Failed to send email.');
-       }
+      pdf.save(`Fixed_Deposit_Receipt_${id}.pdf`);
     });
   }
+      //  Send the PDF via email
+      //  try {
+      //    const response = await axios.post('/api/sendEmail', {
+      //   to: data.email,
+      //    subject: 'Fixed Deposit Receipt',
+      //      text: 'Please find attached your Fixed Deposit receipt.',
+      //    attachment: pdfData.split(',')[1] // Extract base64 data
+      //    });
+      //    if (response.status === 200) {
+      //      toast.success('Receipt sent to email!');
+      //    }
+      //  } catch (error) {
+      //    toast.error('Failed to send email.');
+      //  }
+   
   
   
 

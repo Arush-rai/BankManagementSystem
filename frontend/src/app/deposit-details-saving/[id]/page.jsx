@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
+import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
 const DepositDetails = () => {
@@ -30,7 +31,7 @@ const DepositDetails = () => {
         format: [canvas.width, canvas.height]
       });
       pdf.addImage(imgData, 'PNG', 0, 0);
-      pdf.save(`Fixed_Deposit_Receipt_${id}.pdf`);
+      pdf.save(`Saving_Deposit_Receipt_${id}.pdf`);
     });
   }
 
