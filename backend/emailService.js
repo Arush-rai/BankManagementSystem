@@ -10,7 +10,7 @@ const sendReceiptEmail = async (userEmail, formData) => {
       pass: "xrfpqloavbvuywbw"  // Your Gmail password or App Password
     }
   });
-  
+
   // Example function to send email
   async function sendEmail(to, subject, text, attachment) {
     try {
@@ -33,9 +33,6 @@ const sendReceiptEmail = async (userEmail, formData) => {
     }
   }
 
-
-
- 
   const mailOptions = {
     from: 'raiarush004@gmail.com',
     to: userEmail,

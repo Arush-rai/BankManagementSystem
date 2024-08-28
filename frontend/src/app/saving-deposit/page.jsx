@@ -25,13 +25,13 @@ const SavingDeposit = () => {
             // send values to backend
 
             axios.post('http://localhost:5000/saving/add', values)
-        .then((response) => {
-          console.log(response.status);
-          toast.success('Your Saving Deposit has been added');
-        }).catch((err) => {
-          console.log(err);
-          toast.error('Some Error Occured');
-        });
+                .then((response) => {
+                    console.log(response.status);
+                    toast.success('Your Saving Deposit has been added');
+                }).catch((err) => {
+                    console.log(err);
+                    toast.error('Some Error Occured');
+                });
 
         }
 
@@ -208,7 +208,7 @@ const SavingDeposit = () => {
                                         htmlFor="af-account-bio"
                                         className="inline-block text-sm text-gray-800 mt-2.5"
                                     >
-                                       Current Address
+                                        Current Address
                                     </label>
                                 </div>
                                 {/* End Col */}
@@ -231,7 +231,7 @@ const SavingDeposit = () => {
                                         htmlFor="af-account-bio"
                                         className="inline-block text-sm text-gray-800 mt-2.5"
                                     >
-                                       Permanent Address
+                                        Permanent Address
                                     </label>
                                 </div>
                                 {/* End Col */}
@@ -328,8 +328,8 @@ const SavingDeposit = () => {
                                         required
                                     />
                                 </div>
-                                
-                               
+
+
                                 <div className="sm:col-span-3">
                                     <label
                                         htmlFor="af-account-email"
